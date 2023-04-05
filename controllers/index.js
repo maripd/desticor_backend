@@ -1,6 +1,6 @@
 const bucketList = require('../models/bucketList.js')
 const destinations = require('../models/destinations.js')
-const users = require('../models/users.js')
+const user = require('../models/user.js')
 
 const createBucketList = async (req, res) => {
   console.log(req.body)
@@ -118,7 +118,7 @@ const deleteDestinationById = async (req, res) => {
 const createUser = async (req, res) => {
   console.log(req.body)
   try {
-    const newUser = await new users(req.body)
+    const newUser = await new user(req.body)
     await newUser.save()
     return res.status(201).json({ newUser })
   } catch (error) {
@@ -129,7 +129,7 @@ const createUser = async (req, res) => {
 const getUserById = async (req, res) => {
   try {
     const userId = req.params.id
-    const user = await users.findById(userId)
+    const user = await user.findById(userId)
     return res.status(200).json({ user })
   } catch (error) {
     console.log(error)
@@ -140,7 +140,7 @@ const getUserById = async (req, res) => {
 const updateUserById = async (req, res) => {
   try {
     const userId = req.params.id
-    const editUser = await users.findByIdAndUpdate(userId, req.body)
+    const editUser = await user.findByIdAndUpdate(userId, req.body)
     console.log(editUser)
     return res.status(200).json({ editUser })
   } catch (error) {
@@ -152,7 +152,7 @@ const updateUserById = async (req, res) => {
 const deleteUserById = async (req, res) => {
   try {
     const userId = req.params.id
-    const deleteUser = await users.findByIdAndDelete(userId)
+    const deleteUser = await user.findByIdAndDelete(userId)
     console.log(deleteUser)
     return res.status(200).json({ deleteUser })
     // return res.status(200).send('deleted user')

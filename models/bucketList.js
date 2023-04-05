@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const BucketList = new Schema(
   {
-    bucketListName: { type: String, required: true },
+    bucketListName: { type: String, required: false },
     cityName: { type: String, required: false },
     countryName: { type: String, required: false },
     userId: { type: String, required: false },
