@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const Destinations = new Schema(
   {
@@ -8,6 +8,6 @@ const Destinations = new Schema(
     address: { type: String }
   },
   { timestamps: true }
-)
+);
 
-module.exports = mongoose.model('destinations', Destinations)
+module.exports = mongoose.model("destinations", Destinations);

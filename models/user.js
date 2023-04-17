@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const User = new Schema(
   {
@@ -9,6 +9,6 @@ const User = new Schema(
     password: { type: mongoose.Schema.Types.Mixed, required: true }
   },
   { timestamps: true }
-)
+);
 
-module.exports = mongoose.model('user', User)
+module.exports = mongoose.model("user", User);
