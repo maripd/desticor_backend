@@ -129,7 +129,42 @@ const createUser = async (req, res) => {
     return res.status(500).json({ error: error.message })
   }
 }
+const loginUser = async (req, res) => {
+  const { email, password } = req.body
 
+  try {
+    // Check if user with given email exists
+    let user = await user.findOne({ email })
+    if (!user) {
+      return res.status(400).json({ message: 'User not found' })
+    }
+
+    // Check if password is correct
+    const isMatch = await bcrypt.compare(password, user.password)
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid credentials' })
+    }
+
+    // Create and sign JWT token
+    let payload = {
+      user: {
+        id: user.id
+      }
+    }
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' },
+      (err, token) => {
+        if (err) throw err
+        res.json({ token })
+      }
+    )
+  } catch (err) {
+    console.error(err.message)
+    res.status(500).send('Server error')
+  }
+}
 const getUserById = async (req, res) => {
   try {
     const userId = req.params.id
@@ -178,6 +213,7 @@ module.exports = {
   getDestinationByID,
   deleteDestinationById,
   createUser,
+  loginUser,
   getUserById,
   updateUserById,
   deleteUserById

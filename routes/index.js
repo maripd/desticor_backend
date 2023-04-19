@@ -9,7 +9,6 @@ router.put('/updatebucket/:id', controllers.updateBucket)
 router.delete('/deletebucket/:id', controllers.deleteBucket)
 
 router.post('/createdestination', controllers.createDestination)
-
 router.get('/getalldestinations', controllers.getAllDestinations)
 
 router.get(
@@ -21,6 +20,7 @@ router.get('/getdestination/:id', controllers.getDestinationByID)
 router.delete('/deletedestination/:id', controllers.deleteDestinationById)
 
 router.post('/createuser', controllers.createUser)
+router.post('/login', controllers.loginUser)
 router.get('/getuser/:id', controllers.getUserById)
 router.get('/updateuser/:id', controllers.updateUserById)
 router.delete('/deleteuser/:id', controllers.deleteUserById)
