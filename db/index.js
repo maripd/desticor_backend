@@ -1,14 +1,19 @@
 const mongoose = require('mongoose')
-// require('dotenv').config()
+require('dotenv').config()
 
-let MONGODB_URI = 'mongodb://127.0.0.1:27017/desticor'
+// let MONGODB_URI = 'mongodb://127.0.0.1:27017/desticor-project'
 // let dbUrl =
 //   process.env.NODE_ENV === 'production'
 //     ? process.env.MONGODB_URI
 //     : 'mongodb://127.0.0.1:27017/desticor'
 
+let dbUrl =
+  process.env.NODE_ENV === 'production'
+    ? process.env.MONGODB_URI
+    : 'mongodb://127.0.0.1:27017/desticor-project'
+
 mongoose
-  .connect(MONGODB_URI)
+  .connect(dbUrl)
   .then(() => {
     console.log('Successfully connected to MongoDB!')
   })

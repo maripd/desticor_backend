@@ -3,9 +3,10 @@ const Schema = mongoose.Schema
 
 const Destinations = new Schema(
   {
-    city: { type: String, required: true },
-    country: { type: String, required: true },
-    address: { type: String }
+    //destination description bec API provides city,state and country all in one string
+    destinationDesc: { type: String, required: true },
+    destinationImage: { type: String, required: true },
+    bucketListId: { type: String, required: true }
   },
   { timestamps: true }
 )

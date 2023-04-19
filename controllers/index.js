@@ -1,6 +1,7 @@
 const bucketList = require('../models/bucketList.js')
 const destinations = require('../models/destinations.js')
 const user = require('../models/user.js')
+const bcrypt = require('bcrypt')
 
 const createBucketList = async (req, res) => {
   console.log(req.body)
@@ -81,9 +82,12 @@ const getAllDestinations = async (req, res) => {
 }
 
 const getAllDestinationsByBucketId = async (req, res) => {
-  const bucketId = req.params.bucketId
+  const bucketListId = req.params.bucketid
+  console.log('line 86 logging bucketListId', bucketListId)
   try {
-    const allDestinationsById = await destinations.find({ bucketId: bucketId })
+    const allDestinationsById = await destinations.find({
+      bucketListId: bucketListId
+    })
     await res.status(200).json({ allDestinationsById })
   } catch (error) {
     return res.status(500).send(error.message)
@@ -129,8 +133,8 @@ const createUser = async (req, res) => {
 const getUserById = async (req, res) => {
   try {
     const userId = req.params.id
-    const user = await user.findById(userId)
-    return res.status(200).json({ user })
+    const getUser = await user.findById(userId)
+    return res.status(200).json({ getUser })
   } catch (error) {
     console.log(error)
     return res.status(500).send(error.message)
