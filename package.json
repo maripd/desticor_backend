@@ -4,11 +4,12 @@
   "description": "",
   "main": "server.js",
   "proxy": "http://localhost:3001",
+  "heroku-postbuild": "npm run build",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node server.js",
     "start": "node server.js",
-    "build": "cd client && rm -rf build && npm install && npm run build"
+    // "build": "cd client && rm -rf build && npm install && npm run build"
   },
   "repository": {
     "type": "git",
